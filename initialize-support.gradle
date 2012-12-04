@@ -1,0 +1,13 @@
+/**
+ * Project 기본 디렉토리를 만드는 Task 이다.<br />
+ * gradle initialize
+ */
+task initialize() << {
+    project.ext.createDir = {
+        println "create source directory: $it"
+        it.mkdirs()
+    }
+
+    sourceSets*.java.srcDirs*.each createDir
+    sourceSets*.resources.srcDirs*.each createDir
+}

@@ -1,0 +1,38 @@
+
+/**
+ * Maven local repository 로 배포하는 Task 이다. 
+ */
+install {
+    repositories.mavenInstaller {
+        pom.artifactId = project.name
+        pom.groupId = project.group
+        pom.version = version
+    }
+}
+
+/**
+ * Remote repository로 배포하는 Task 이다.
+ */
+uploadArchives { 
+    repositories { 
+        mavenDeployer {
+            if (!hasProperty('username') || !hasProperty('userpassword')) {
+                println "Please setting [gradle.properties] username, userpassword property!"
+            }
+            if ( version.endsWith("SNAPSHOT") ) {
+                println("Snapshot Version :" + version)
+                repository(url:getProperty('nexussnapshotrepository')){
+                    authentication(userName:getProperty('username'), password: getProperty('userpassword'))
+                }
+            } else {
+                repository(url:getProperty('nexusreleaserepository')){
+                    authentication(userName:getProperty('username'), password : getProperty('userpassword'))
+                }
+            }
+
+            pom.project {
+                packaging "jar"
+            }
+        }
+    }
+}

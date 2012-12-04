@@ -1,0 +1,10 @@
+// JAVA 컴파일시 인코딩 설정
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+/**
+ * SNAPSHOT repository 에있는 artifact 같은버전을 여러번 참조하는경우 <br />
+ * 못 가져오는경우도 있을수 있으므로 cache expired 를 1초로 세팅한다.
+ */
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 1, 'seconds'
+}

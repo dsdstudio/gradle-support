@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'osgi'
+apply from: 'common-support.gradle'
+apply from: 'eclipse-support.gradle'
+apply from: 'mvn-support.gradle'
+apply from: 'initialize-support.gradle'
+
+project.sourceCompatibility = 1.6
+
+project.ext.group = 'net.dsdstudio'
+project.ext.version = '0.0.1-SNAPSHOT'
+project.ext.artifact = 'borongModule'
+
+/**
+ * Repository 를 정의한다. <br />
+ * Maven central
+ */
+repositories {
+    mavenCentral()
+}
+
+/**
+ * Task phase시 classpath 를 정의한다. <br />
+ * compile time 과 testclass compile 
+ */
+dependencies { 
+	compile 'org.apache.commons:commons-lang3:3.1'
+	testCompile 'junit:junit:4.+', 'org.mockito:mockito-core:1.9.0'
+}
+
+
+jar {
+    manifest {
+        instruction 'Module-Description','Borong module'
+    }
+}
