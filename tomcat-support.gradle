@@ -1,5 +1,3 @@
-apply plugin: 'tomcat'
-
 /**
  * tomcat7 plugin
  */
