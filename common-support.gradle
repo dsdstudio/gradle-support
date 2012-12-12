@@ -8,3 +8,5 @@
 configurations.all {
     resolutionStrategy.cacheChangingModulesFor 1, 'seconds'
 }
+task cleanAndBuild(dependsOn:['w','clean']) { }
+task w(dependsOn:'build') {}
