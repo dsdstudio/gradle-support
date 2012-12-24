@@ -13,3 +13,13 @@ eclipse {
 		}
 	}
 }
+
+eclipse.classpath.file { 
+	beforeMerged { classpath -> 
+		classpath.entries.removeAll { entry -> entry.kind == 'lib' || entry.kind == 'var' }
+	}
+}
+
+eclipse.project.file.beforeMerged { project ->
+	project.natures.clear()
+}
