@@ -23,3 +23,5 @@ eclipse.classpath.file {
 eclipse.project.file.beforeMerged { project ->
 	project.natures.clear()
 }
+
+tasks.eclipse.dependsOn(cleanEclipse)
