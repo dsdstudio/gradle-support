@@ -7,11 +7,8 @@ apply from: 'eclipse-support.gradle'
 apply from: 'mvn-support.gradle'
 apply from: 'initialize-support.gradle'
 
-project.sourceCompatibility = 1.6
-
-project.ext.group = 'net.dsdstudio'
-project.ext.version = '0.0.1-SNAPSHOT'
-project.ext.artifact = 'borongModule'
+group = 'net.dsdstudio'
+version = '0.0.1-SNAPSHOT'
 
 /**
  * Repository 를 정의한다. <br />
