@@ -45,6 +45,11 @@
 
 #### 사용방법 
 
+build.gradle 
+
+	apply plugin: 'maven'
+	apply from: 'https://raw.github.com/dsdstudio/gradle-support/master/mvn-support.gradle'
+
 ##### local repository에 배포 
 
 	$ gradle install
