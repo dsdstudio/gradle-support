@@ -16,9 +16,13 @@ install {
 uploadArchives { 
     repositories { 
         mavenDeployer {
-            if (!hasProperty('username') || !hasProperty('userpassword')) {
-                println "Please setting [gradle.properties] username, userpassword property!"
+            if (!project.hasProperty('username') || !project.hasProperty('userpassword')) {
+                println "Please setting [gradle.properties] or -P(property) option  username, userpassword property!"
             }
+            if (!project.hasProperty('nexussnapshotrepository') || !project.hasProperty('nexusreleaserepository')) {
+                println "Please setting [gradle.properties] or -P(property) option  nexussnapshotrepository, nexusreleaserepository property!"
+            }
+
             if ( version.endsWith("SNAPSHOT") ) {
                 println("Snapshot Version :" + version)
                 repository(url:getProperty('nexussnapshotrepository')){
