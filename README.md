@@ -1,7 +1,9 @@
 ## gradle-support
 
+DRY(Do not Repeat YourSelf!) 개인적으로 사용하는 gradle 설정들을 종류별로 모아봤습니다. 매번 파일로 추가하기보다는 인터넷이 되는 환경이라면 `apply from:url` 의 형태로 간단히 추가해서 자주쓰는설정들의 중복을 없앱니다. 
+
 ### common-support.gradle
-공통적으로 사용하는 설정들을 모아놨다. 
+일반적인 Project에서 공통적으로 사용하는 설정. 
 
 - java compile encoding default utf-8
 - dependency repository non-caching (snapshot repo에서 작업할경우를 대비)
@@ -24,7 +26,7 @@
 
 ### initialize-support.gradle 
 
-> source / test / resource 디렉토리를 초기화하는 스크립트 모음 
+> source / test / resource 디렉토리를 초기화하는 스크립트 모음 (프로젝트 시작시 bootstrap용으로 사용된다)
 
 	$ gradle initialize
 
@@ -59,5 +61,3 @@ build.gradle
 	$ gradle -Pusername=nexususername -Puserpassword=nexususerpassword -Pnexussnapshotrepository=http://custom_nexus_hostname:port/snapshots/ -Pnexusreleaserepository=http://custom_nexus_hostname:port/releases
 
 설정이 너무 길다 싶으면 gradle.properties 에 해당 설정을 빼면 된다. 
-
-
